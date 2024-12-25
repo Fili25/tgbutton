@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram App Buttons</title>
+    <!-- Подключаем Telegram WebApp SDK (правильная ссылка) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>Open Telegram App</h1>
+
+    <!-- Кнопка для вызова через OpenTelegramLink -->
+    <button onclick="openWithSDK()">Open with OpenTelegramLink</button>
+
+    <!-- Кнопка для вызова через openTgLink -->
+    <button onclick="openWithPlatform()">Open with openTgLink</button>
+
+    <!-- Кнопка с обычной ссылкой -->
+    <a href="https://t.me/notcoin_bot/click" target="_blank">
+        <button>Open via Link</button>
+    </a>
+
+    <script>
+        function openWithSDK() {
+            if (typeof Telegram !== "undefined" && Telegram.Utils) {
+                Telegram.Utils.OpenTelegramLink('https://t.me/notcoin_bot/click');
+            } else {
+                alert('Telegram SDK не загружен или не доступен.');
+            }
+        }
+
+        function openWithPlatform() {
+            if (typeof Telegram !== "undefined" && Telegram.WebApp) {
+                Telegram.WebApp.openTgLink('https://t.me/notcoin_bot/click');
+            } else {
+                alert('Telegram WebApp SDK не загружен или не доступен.');
+            }
+        }
+    </script>
+</body>
+</html>
